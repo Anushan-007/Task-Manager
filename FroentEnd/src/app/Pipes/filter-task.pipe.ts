@@ -6,20 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterTaskPipe implements PipeTransform {
 
-  transform(items : any, ...searchText: any[]): any {
+  transform(value : any, ...arg: string[]): any {
     
-    if (!items) {
-      return [];
-    }
-    if (!searchText) {
-      return items;
-    }
-    // searchText = searchText.toLocaleLowerCase();
+    const searchText = arg[0];
 
-    // return items.filter(it => {
-    //   return it.toLocaleLowerCase().includes(searchText);
-    // });
-
+    return value.filter((a:any) => a.title.toLowerCase().includes(searchText.toLowerCase()) || a.description.toLowerCase().includes(searchText.toLowerCase()))
     
   }
 

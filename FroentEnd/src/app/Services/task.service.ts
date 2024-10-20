@@ -27,4 +27,8 @@ export class TaskService {
     return this.http.get('http://localhost:5024/api/TaskItems/'+ taskId);
   }
 
+  updateTask(task: any , taskId:number){
+    return this.http.put('http://localhost:5024/api/TaskItems/'+ taskId, task);
+  }
+
 }
