@@ -3,23 +3,25 @@ import { TaskService } from '../../Services/task.service';
 import { Task } from '../../Models/Task';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgStyle } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Route, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { FilterTaskPipe } from '../../Pipes/filter-task.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink, RouterOutlet, NgStyle],
+  imports: [FormsModule, CommonModule, RouterLink, RouterOutlet, NgStyle, FilterTaskPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
 
- 
+  SearchTerm:string='' ;
 
   task: any[] = [];
 
 
-  constructor(private taskService: TaskService ) {
+  constructor(private taskService: TaskService , private routes:Router, private toastr:ToastrService) {
   
   }
 
@@ -28,9 +30,16 @@ export class HomeComponent {
   }
 
   onDelete(taskId: number) {
-    this.taskService.deleteTask(taskId).subscribe((data) => {
-      this.loadTask();
-    });
+    if (confirm("Do you want to Delete...")) {
+      this.taskService.deleteTask(taskId).subscribe((data) => {
+        this.toastr.success("Successfully Deleted","Deleted", {
+          positionClass: 'toast-top-center'
+        });
+       
+        this.loadTask();
+      });
+    }
+   
   }
 
   loadTask() {
@@ -43,7 +52,13 @@ export class HomeComponent {
       complete: () => {},
       error(error: any) {
         console.log(error);
+        
       },
     });
+  }
+
+
+  onEdit(taskId:number){
+    this.routes.navigate(['/edit',taskId ])
   }
 }
