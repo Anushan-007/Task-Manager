@@ -6,6 +6,7 @@ import { CommonModule, NgStyle } from '@angular/common';
 import { Route, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FilterTaskPipe } from '../../Pipes/filter-task.pipe';
 import { ToastrService } from 'ngx-toastr';
+import { ITask } from '../../Interfaces/ITask';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent {
 
   SearchTerm:string='' ;
 
-  task: any[] = [];
+  task: ITask[] = [];
 
 
   constructor(private taskService: TaskService , private routes:Router, private toastr:ToastrService) {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ITask } from '../Interfaces/ITask';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,10 @@ export class TaskService {
   }
 
   getTask(){
-    return this.http.get<any[]>('http://localhost:5024/api/TaskItems');
+    return this.http.get<ITask[]>('http://localhost:5024/api/TaskItems');
   }
 
-  createTask(task:any){
+  createTask(task:ITask){
     return this.http.post('http://localhost:5024/api/TaskItems',task);
   }
 
@@ -27,7 +28,7 @@ export class TaskService {
     return this.http.get('http://localhost:5024/api/TaskItems/'+ taskId);
   }
 
-  updateTask(task: any , taskId:number){
+  updateTask(task: ITask , taskId:number){
     return this.http.put('http://localhost:5024/api/TaskItems/'+ taskId, task);
   }
 
