@@ -30,7 +30,7 @@ export class AddTaskComponent {
   onSubmit(){
     let task = this.addTaskForm.value;
     this.taskService.createTask(task).subscribe(data => {
-      this.router.navigate (['/'])
+      this.router.navigate (['list-task'])
       this.toastr.success("Task is Created Successfully", "Created")
     })
 
@@ -41,10 +41,7 @@ export class AddTaskComponent {
       this.toastr.warning("Cancel Add Task item", "Cancelled"), {
         setTimeout : 5000 , 
       }
-      this.router.navigate(['/'])
-      
+      this.router.navigate(['list-task'])   
   }
-
-
 
 }
