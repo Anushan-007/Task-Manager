@@ -46,8 +46,7 @@
               "RelativeToolTip": "TaskManagerAPI\\Models\\TaskItem.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T04:36:45.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:36:45.587Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "TaskManagerAPI\\Controllers\\UsersController.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAC8AAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T04:05:37.203Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:05:37.203Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "TaskManagerAPI\\Data\\TaskContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T04:00:49.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:00:49.014Z"
             },
             {
               "$type": "Document",
@@ -83,7 +80,7 @@
               "RelativeDocumentMoniker": "TaskManagerAPI\\Models\\User.cs",
               "ToolTip": "X:\\ActivitySD\\Activity44\\BackEnd\\TaskManagerAPI\\TaskManagerAPI\\Models\\User.cs",
               "RelativeToolTip": "TaskManagerAPI\\Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBQAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T03:59:39.91Z",
               "EditorCaption": ""
@@ -98,8 +95,7 @@
               "RelativeToolTip": "TaskManagerAPI\\Controllers\\TaskItemsController.cs",
               "ViewState": "AQIAAEQAAAAAAAAAAAAwwEYAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T08:25:20.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-19T08:25:20.999Z"
             },
             {
               "$type": "Document",

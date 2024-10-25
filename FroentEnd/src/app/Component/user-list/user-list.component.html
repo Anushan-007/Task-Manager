@@ -3,7 +3,7 @@
     <div class="card container m-5 p-3">
 
       <div class="d-flex justify-content-between mt-3">
-        <input type="text" placeholder="Search Users....."/>
+        <input type="text" placeholder="Search Users....." [(ngModel)]="binding">
         <button type="button" class="btn btn-dark" [routerLink]="['/user-add']" routerLinkActive="router-link-active" >
           <i class="bi bi-plus-square-fill"></i> New Users
         </button>
@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of User">
+            <tr *ngFor="let item of User | filterUser : binding">
               <td>{{item.id}}</td>
               <td>{{item.name}}</td>
               <td>{{item.email}}</td>
@@ -31,7 +31,7 @@
                 <button type="button" class="btn btn-info " [routerLink]="['/user-edit' , item.id]">
                   <i class="bi bi-pencil-square"></i>
                 </button>
-                <button type="button" class="btn btn-danger " >
+                <button type="button" class="btn btn-danger " (click)="onDelete(item.id)">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>

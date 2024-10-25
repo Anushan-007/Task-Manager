@@ -14,8 +14,6 @@ namespace TaskManagerAPI.Models
         public string PhoneNumber { get; set; }
         [Required]
         public string Password { get; set; }
-        
-
 
     }
 }

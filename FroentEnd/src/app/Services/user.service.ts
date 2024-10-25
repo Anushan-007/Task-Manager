@@ -27,4 +27,8 @@ export class UserService {
     return this.http.get<IUser>('http://localhost:5024/api/Users/'+ userId)
   }
 
+  deleteUser(userId:number){
+    return this.http.delete('http://localhost:5024/api/Users/'+ userId)
+  }
+
 }
