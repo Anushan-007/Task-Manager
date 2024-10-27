@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../Services/task.service';
 import { Router, Routes } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IUser } from '../../Interfaces/IUser';
 import { UserService } from '../../Services/user.service';
 import { CommonModule } from '@angular/common';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule, BsDatepickerModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
@@ -18,7 +20,6 @@ export class AddTaskComponent implements OnInit{
 
   addTaskForm: FormGroup;
   Users:IUser[] = [];
-
   constructor(private fb:FormBuilder , private taskService :TaskService, private router:Router, private toastr:ToastrService, private userService:UserService) {
 
     this.addTaskForm = this.fb.group({
@@ -26,10 +27,29 @@ export class AddTaskComponent implements OnInit{
       description: ['',[Validators.required]],
       dueDate: ['',[Validators.required]],
       priority: ['Medium',[Validators.required]],
-      UserId: ['']
+      UserId: [''],
+      checks:this.fb.array([])
     })
 
   }
+
+  get MyCheckList(): FormArray{
+    return this.addTaskForm.get('checks') as FormArray
+  }
+
+  addCheckList(){
+    this.MyCheckList.push(
+      this.fb.group({
+        name:[''],
+        isDone:[false]
+      })
+    );
+  }
+
+  removeCheckList(index:number){
+    this.MyCheckList.removeAt(index);
+  }
+
   ngOnInit(): void {
     this.userService.getUser().subscribe(data => {
       this.Users = data;

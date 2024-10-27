@@ -1,42 +1,64 @@
-<div class="row">
-  <div class="col-6 mx-auto">
-    <div class="card container m-5 p-3">
-
-      <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
-        <div class="d-flex justify-content-between">
-            <h3 class="text text-danger">Add New Task</h3>
-            <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
-        </div>
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" formControlName="title">
-        </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <input type="text" class="form-control" id="description" formControlName="description">
-        </div>
-        <div class="mb-3">
-            <label for="dueDate" class="form-label">Due Date</label>
-            <input type="date" class="form-control" id="dueDate" formControlName="dueDate">
+<div class="container">
+  <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-6"> 
+      <div class="d-flex justify-content-between">
+        <h3 class="text text-danger">Add New Task</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title"/>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description"/>
+      </div>
+      <div class="mb-3">
+        <label for="dueDate" class="form-label">Due Date</label>
+        <input type="text" bsDatepicker autocomplete="off" class="form-control" id="dueDate" formControlName="dueDate"/>
+      </div>
+      <div class="mb-3 form-control">
+        <select name="" id="" formControlName="priority">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      <div class="mb-3 form-control">
+        <select name="" id="" formControlName="UserId">
+          <option *ngFor="let item of Users" [value]="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="addTaskForm.invalid"> Submit</button>
+      <button type="click" class="btn btn-secondary" (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+    <div class="col-6">
+      <div formArrayName="checks">
+        <div class="row" *ngFor="let check of MyCheckList.controls; let i = index">
+          <div class="mb-3">
+            <div class="mb-3" [formGroupName]="i">
+              <input type="checkbox"  id="checkList"  formControlName="isDone"/>
+              <input type="text" class="form-control" id="checkList"  placeholder="Enter the CheckList" formControlName="name"/>
+            </div>
           </div>
-          <div class="mb-3 form-control">
-            <select name="" id="" formControlName="priority">
-                <option value="High" >High</option>
-                <option value="Medium" >Medium</option>
-                <option value="Low">Low</option>
-            </select>
-          </div>
-          <div class="mb-3 form-control">
-            <select name="" id="" formControlName="UserId">
-                <option *ngFor="let item of Users" [value]="item.id" >{{item.name}}</option>
-            </select>
-          </div>
-        <button type="submit" class="btn btn-primary" [disabled]="addTaskForm.invalid">Submit</button>
-        <button type="click" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
-      </form>
-    
+          <button type="button" class="btn btn-danger" (click)="removeCheckList(i)">
+            <i class="bi bi-trash"></i>
+          </button>
+          
+        </div>
+  
+        <button type="button" class="btn btn-dark" (click)="addCheckList()">
+          <i class="bi bi-plus-square-fill"></i>
+        </button>
+        
+      </div>
     </div>
   </div>
+
+  </form>
 </div>
-
-

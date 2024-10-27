@@ -16,6 +16,7 @@ namespace TaskManagerAPI.Models
 
         public User? User { get; set; }
         public int? UserId { get; set; }
+        public ICollection<CheckList>? Checks { get; set; }
 
     }
 }

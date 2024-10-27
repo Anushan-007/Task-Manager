@@ -17,13 +17,18 @@
           </div>
           <div class="mb-3">
               <label for="dueDate" class="form-label">Due Date</label>
-              <input type="date" class="form-control" id="dueDate" formControlName="dueDate">
+              <input type="text" bsDatepicker autocomplete="off" class="form-control" id="dueDate" formControlName="dueDate">
             </div>
             <div class="mb-3 form-control">
               <select name="" id="" formControlName="priority">
                   <option value="High" >High</option>
                   <option value="Medium" >Medium</option>
                   <option value="Low">Low</option>
+              </select>
+            </div>
+            <div class="mb-3 form-control">
+              <select name="" id="" formControlName="UserId">
+                  <option *ngFor="let item of Users" [value]="item.id" >{{item.name}}</option>
               </select>
             </div>
           <button type="submit" class="btn btn-primary" [disabled]="addTaskForm.invalid" (click)="onSubmit()">Submit</button>
