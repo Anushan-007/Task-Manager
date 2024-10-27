@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../Models/Task';
 import { ToastrService } from 'ngx-toastr';
+import { IUser } from '../../Interfaces/IUser';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-edit-task',
@@ -18,8 +20,9 @@ export class EditTaskComponent implements OnInit {
   addTaskForm: FormGroup;
   currentID : number;
   currenTask! : any ;
+  Users:IUser[] = [];
 
-  constructor(private fb:FormBuilder , private taskService :TaskService, private router:Router, private route:ActivatedRoute, private toastr : ToastrService)  {
+  constructor(private fb:FormBuilder , private taskService :TaskService, private router:Router, private route:ActivatedRoute, private toastr : ToastrService , private userService:UserService)  {
     this.currentID =  (Number)(this.route.snapshot.paramMap.get("id"));
     this.addTaskForm = this.fb.group({
       id: ['',[]],
@@ -27,6 +30,7 @@ export class EditTaskComponent implements OnInit {
       description: ['',[Validators.required]],
       dueDate: ['',[Validators.required]],
       priority: ['Medium',[Validators.required]],
+      UserId: ['']
     })
 
   }
@@ -35,8 +39,16 @@ export class EditTaskComponent implements OnInit {
       this.currenTask = data;
       this.currenTask.dueDate = new Date (this.currenTask.dueDate).toISOString().slice(0,10);
       this.addTaskForm.patchValue(data);
-    })
+     
+      this.userService.getUser().subscribe(data => {
+        this.Users = data;
+      })
+
+    });
+   
   }
+
+
 
 
     onSubmit(){

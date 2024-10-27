@@ -7,6 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../Models/User';
 import { FilterUserPipe } from '../../Pipes/filter-user.pipe';
+import { ITask } from '../../Interfaces/ITask';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +18,8 @@ import { FilterUserPipe } from '../../Pipes/filter-user.pipe';
 })
 export class UserListComponent implements OnInit{
 
-User: IUser[] =[]
+User: IUser[] =[];
+tasks:ITask[]=[];
 binding:any;
 
 constructor(private userService: UserService, private router:Router, private toastr:ToastrService){
