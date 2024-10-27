@@ -15,5 +15,9 @@ namespace TaskManagerAPI.Models
         [Required]
         public string Password { get; set; }
 
+        public Address Addresses { get; set; }
+         
+        public ICollection <TaskItem>? Tasks { get; set; } 
+
     }
 }

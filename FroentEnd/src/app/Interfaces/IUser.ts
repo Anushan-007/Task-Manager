@@ -1,3 +1,5 @@
+import { IAddress } from "./IAddress";
+
 export interface IUser{
     filter(): any;
     id:number;
@@ -5,4 +7,6 @@ export interface IUser{
     email:string;
     phoneNumber:string;
     password:string;
+    addresses?: IAddress;
 }
+

@@ -26,6 +26,11 @@
                 <option value="Low">Low</option>
             </select>
           </div>
+          <div class="mb-3 form-control">
+            <select name="" id="" formControlName="UserId">
+                <option *ngFor="let item of Users" [value]="item.id" >{{item.name}}</option>
+            </select>
+          </div>
         <button type="submit" class="btn btn-primary" [disabled]="addTaskForm.invalid">Submit</button>
         <button type="click" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
       </form>

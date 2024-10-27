@@ -1,30 +1,41 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../Services/task.service';
 import { Router, Routes } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { IUser } from '../../Interfaces/IUser';
+import { UserService } from '../../Services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit{
 
   addTaskForm: FormGroup;
+  Users:IUser[] = [];
 
-  constructor(private fb:FormBuilder , private taskService :TaskService, private router:Router, private toastr:ToastrService){
+  constructor(private fb:FormBuilder , private taskService :TaskService, private router:Router, private toastr:ToastrService, private userService:UserService) {
 
     this.addTaskForm = this.fb.group({
       title: ['',[Validators.required]],
       description: ['',[Validators.required]],
       dueDate: ['',[Validators.required]],
-      priority: ['Medium',[Validators.required]]
+      priority: ['Medium',[Validators.required]],
+      UserId: ['']
     })
 
   }
+  ngOnInit(): void {
+    this.userService.getUser().subscribe(data => {
+      this.Users = data;
+    })
+  }
+
 
 
   onSubmit(){

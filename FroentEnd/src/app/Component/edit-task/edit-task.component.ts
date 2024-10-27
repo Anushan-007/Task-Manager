@@ -26,8 +26,7 @@ export class EditTaskComponent implements OnInit {
       title: ['',[Validators.required]],
       description: ['',[Validators.required]],
       dueDate: ['',[Validators.required]],
-      priority: ['Medium',[Validators.required]]
-
+      priority: ['Medium',[Validators.required]],
     })
 
   }
