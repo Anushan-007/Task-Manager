@@ -49,6 +49,13 @@ export class UserAddComponent implements OnInit {
       email: ['', [Validators.email]],
       phoneNumber: ['', [Validators.maxLength(10)]],
       password: ['', [Validators.required, Validators.minLength(5)]],
+      addresses: this.fb.group({
+        id: ['0', []],
+        line1: ['', [Validators.required]],
+        street: ['', []],
+        city: ['', []],
+      }),
+      
     });
   }
   ngOnInit(): void {
@@ -68,7 +75,6 @@ export class UserAddComponent implements OnInit {
       let user = this.userAddForm.value;
       user.id = 0;
       this.userService.createUser(user).subscribe((data) => {
-       
         this.router.navigate(['user-list']);
         this.toastr.success('User Created Successfully', 'User');
       });

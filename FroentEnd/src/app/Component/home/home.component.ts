@@ -52,8 +52,7 @@ export class HomeComponent {
       },
       complete: () => {},
       error(error: any) {
-        console.log(error);
-        
+        console.log(error);      
       },
     });
   }

@@ -11,5 +11,20 @@ namespace TaskManagerAPI.Data
 
         public DbSet<TaskItem> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Address> Address { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasOne(a => a.Addresses).WithOne(u => u.Users).HasForeignKey<Address>(x => x.UserId);
+
+            modelBuilder.Entity<User>().HasMany(o => o.Tasks).WithOne(p => p.User).HasForeignKey(x => x.UserId);
+               
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+
     }
 }

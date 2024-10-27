@@ -23,6 +23,25 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" formControlName="password">
               </div>
+
+              <div formGroupName="addresses">
+                <div class="mb-3">
+                  <label for="line1" class="form-label">Address Line1</label>
+                  <input type="text" class="form-control" id="line1" formControlName="line1">
+                  <small class="text-danger" *ngIf="userAddForm.get('addresses.line1')?.invalid && userAddForm.get('addresses.line1')?.touched">
+                    Address is required
+                  </small>
+                </div>
+                <div class="mb-3">
+                  <label for="street" class="form-label">Street</label>
+                  <input type="text" class="form-control" id="street" formControlName="street">
+                </div>
+                <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="city" formControlName="city">
+                </div>
+              </div>
+
           <button type="submit" class="btn btn-primary" [disabled]="userAddForm.invalid">Submit</button>
           <button type="click" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
         </form>
