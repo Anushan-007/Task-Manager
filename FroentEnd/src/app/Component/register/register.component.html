@@ -1,0 +1,62 @@
+<div class="container shadow-lg mt-5 rounded">
+
+  <div class="row ">
+    <div class="col-6">
+      <form class="m-5" [formGroup]="registerForm">
+  
+        <h1>Sign Up</h1>
+  
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+              <input type="text" class="form-control" placeholder="John Doe" aria-label="Username" aria-describedby="basic-addon1" formControlName="fullName">
+            </div>
+            <div id="nameMg" class="form-text text-danger" *ngIf="registerForm.controls.fullName?.errors?.required && registerForm.controls.fullName?.touched">Full Name is required</div>
+  
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-plus"></i></span>
+              <input type="email" class="form-control" placeholder="Your Email" aria-label="Emailname" aria-describedby="basic-addon2" formControlName="email">
+            </div>
+            <div id="emailMg" class="form-text text-danger" *ngIf="registerForm.controls.email?.errors?.required && registerForm.controls.email?.touched">Valid is required</div>
+            <div id="emailMg" class="form-text text-danger" *ngIf="registerForm.controls.email?.errors?.email">InValid Email</div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-file-lock"></i></span>
+              <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon3" formControlName="password">
+            </div>
+            <div id="passwordMg" class="form-text text-danger" *ngIf="registerForm.controls.password?.errors?.maxlength && registerForm.controls.password?.touched">Password must be at least 6 characters long</div>
+         
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-file-lock-fill"></i></span>
+              <input type="password" class="form-control" placeholder="Repeat Password" aria-label="Username" aria-describedby="basic-addon4" formControlName="repeatPassword">
+            </div>
+      
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-bounding-box"></i></span>
+              <select class="form-select" aria-label="Default select example" formControlName="roles" >
+                <option value=1>Admin</option>
+                <option value=2>Editor</option>
+                <option value=3>Viewer</option>
+              </select>
+            </div>
+            <div id="roleMg" class="form-text text-danger" *ngIf="registerForm.controls.roles?.errors?.required && registerForm.controls.roles?.touched">Role is required</div>
+      
+            <input type="checkbox">
+            <p>I agree the all statement in Terms of Service</p>
+            <p class="text-danger">You must the agree to the terms</p>
+          
+          <button type="submit" class="btn btn-primary" (click)="onRegister(registerForm)">Register</button>
+      
+          <p class="text-secondary link-underline-secondary">I am already a member</p>
+        </form>
+      
+    </div>
+    <div class="col-6">
+      <img src="signup.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

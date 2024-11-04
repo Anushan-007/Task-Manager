@@ -1,3 +1,4 @@
+import { ICheckList } from "./ICheckList";
 import { IUser } from "./IUser";
 
 export interface ITask{
@@ -6,5 +7,6 @@ export interface ITask{
     description:string;
     dueDate:string;
     priority:string;
-    user:IUser
+    user?:IUser
+    CheckList? : ICheckList[];
 }

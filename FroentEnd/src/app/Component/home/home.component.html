@@ -35,7 +35,7 @@
               <td>{{ item.description }}</td>
               <td>{{ item.dueDate | date : 'dd-MMM-yyyy'}}</td>
               <td [ngStyle]="{'color': item.priority == 'High'? 'red': 'green'}">{{ item.priority }}</td>
-              <td>{{ item.user.name }}</td>
+              <td>{{ item.user?.name }}</td>
               <td class="m-5">
                 <button type="button" class="btn btn-info " (click)="onEdit(item.id)">
                   <i class="bi bi-pencil-square"></i>
