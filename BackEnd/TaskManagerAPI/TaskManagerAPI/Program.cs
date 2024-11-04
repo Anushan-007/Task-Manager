@@ -1,5 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
 using TaskManagerAPI.Data;
 
@@ -24,13 +26,22 @@ namespace TaskManagerAPI
 
             builder.Services.AddDbContext<TaskContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]));
+            builder.Services.AddAuthentication()
+                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = key,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                });
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(name: "CORSOpenPolicy",
                                   policy =>
                                   {
                                       policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
-                                                          
+
                                   });
             });
 

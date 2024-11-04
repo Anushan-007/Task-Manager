@@ -20,6 +20,8 @@ export class UserListComponent implements OnInit{
 
 User: IUser[] =[];
 tasks:ITask[]=[];
+
+
 binding:any;
 
 constructor(private userService: UserService, private router:Router, private toastr:ToastrService){
@@ -57,7 +59,6 @@ constructor(private userService: UserService, private router:Router, private toa
       },
     })
   }
-
 
 
 }
