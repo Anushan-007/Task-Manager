@@ -56,14 +56,14 @@ export class EditTaskComponent implements OnInit {
       const task = this.addTaskForm.value;
       this.taskService.updateTask(task, this.currentID).subscribe(data => {
         this.toastr.success("Task is Updated Successfully", "Success");
-        this.router.navigate(['list-task']);
+        this.router.navigate(['/admin/list-task']);
       })
 
 
       }
 
       onCancel(){
-        this.router.navigate(['list-task'])
+        this.router.navigate(['/admin/list-task'])
     }
 
 

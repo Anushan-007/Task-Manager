@@ -4,7 +4,7 @@
 
       <div class="d-flex justify-content-between mt-3">
         <input type="text" placeholder="Search Users....." [(ngModel)]="binding">
-        <button type="button" class="btn btn-dark" [routerLink]="['/user-add']" routerLinkActive="router-link-active" >
+        <button type="button" class="btn btn-dark" [routerLink]="['/admin/user-add']" routerLinkActive="router-link-active" >
           <i class="bi bi-plus-square-fill"></i> New Users
         </button>
       </div>
@@ -38,7 +38,7 @@
               <td>{{item.tasks?.length}}</td>
               
               <td class="m-5">
-                <button type="button" class="btn btn-info " [routerLink]="['/user-edit' , item.id]">
+                <button type="button" class="btn btn-info " [routerLink]="['/admin/user-edit' , item.id]">
                   <i class="bi bi-pencil-square"></i>
                 </button>
                 <button type="button" class="btn btn-danger " (click)="onDelete(item.id)">
