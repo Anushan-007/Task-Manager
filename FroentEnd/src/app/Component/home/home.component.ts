@@ -72,7 +72,7 @@ export class HomeComponent {
 
 
   onEdit(taskId:number){
-    this.routes.navigate(['/edit',taskId ])
+    this.routes.navigate(['/admin/edit',taskId ])
   }
 
 

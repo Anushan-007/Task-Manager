@@ -8,7 +8,7 @@ import { EditTaskComponent } from './Component/edit-task/edit-task.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, AddTaskComponent, RouterLink ,EditTaskComponent],
+  imports: [RouterOutlet, HomeComponent, AddTaskComponent ,EditTaskComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

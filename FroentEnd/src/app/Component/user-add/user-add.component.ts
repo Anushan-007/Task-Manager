@@ -26,7 +26,7 @@ export class UserAddComponent implements OnInit {
   isEditForm: boolean = false;
 
   onCancel() {
-    this.router.navigate(['user-list']);
+    this.router.navigate(['/admin/user-list']);
   }
   CurrentID!: number;
   userAddForm: any;
@@ -75,7 +75,7 @@ export class UserAddComponent implements OnInit {
       let user = this.userAddForm.value;
       user.id = 0;
       this.userService.createUser(user).subscribe((data) => {
-        this.router.navigate(['user-list']);
+        this.router.navigate(['/admin/user-list']);
         this.toastr.success('User Created Successfully', 'User');
       });
     } else if (this.isEditForm == true) {
@@ -88,7 +88,7 @@ export class UserAddComponent implements OnInit {
         .updateUser(user, this.currentUser.id)
         .subscribe((data) => {
           this.toastr.success('User is Updated Successfully', 'Updated');
-          this.router.navigate(['user-list']);
+          this.router.navigate(['/admin/user-list']);
         });
     }
   }

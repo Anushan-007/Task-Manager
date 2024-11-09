@@ -72,7 +72,7 @@ export class AddTaskComponent implements OnInit{
       this.toastr.warning("Cancel Add Task item", "Cancelled"), {
         setTimeout : 5000 , 
       }
-      this.router.navigate(['list-task'])   
+      this.router.navigate(['/admin/list-task'])   
   }
 
 }
