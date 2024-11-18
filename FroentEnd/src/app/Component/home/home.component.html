@@ -2,14 +2,9 @@
   <div class="col-6 mx-auto">
 
     <div class="card container m-5">
-      <div class="d-flex justify-content-between mt-3">
+      <div class="d-flex justify-content-between mt-3" *appHasRole="'Admin'">
         <input type="text" placeholder="Search Tasks....." [(ngModel)]="SearchTerm" />
-        <button
-          type="button"
-          class="btn btn-dark"
-          [routerLink]="['/admin/add-task']"
-          routerLinkActive="router-link-active"
-        >
+        <button type="button" class="btn btn-dark" [routerLink]="['/admin/add-task']" routerLinkActive="router-link-active">
           <i class="bi bi-plus-square-fill"></i> New Task
         </button>
       </div>

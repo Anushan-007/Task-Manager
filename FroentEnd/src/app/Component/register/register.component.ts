@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { IUserRegister } from '../../Interfaces/UserRegister';
 import { RegisterService } from '../../Services/register.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -20,7 +21,7 @@ export class RegisterComponent {
   
  
 
-  constructor(private fb:FormBuilder, private registerService:RegisterService , private toaster:ToastrService){
+  constructor(private fb:FormBuilder, private registerService:RegisterService , private toaster:ToastrService, private router:Router){
    
 
     this.registerForm = this.fb.group({
@@ -38,6 +39,8 @@ export class RegisterComponent {
     
     this.registerService.AddRegisterUser(this.UserRegister).subscribe(data =>{
       this.toaster.success("Sign Up Successfully", "Sign Up")
+      console.log(data);
+      this.router.navigate(['/admin/login'])
     })
      console.log(registerForm.value);
   }

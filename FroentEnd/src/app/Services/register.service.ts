@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IUserRegister } from '../Interfaces/UserRegister';
 import { Login } from '../Models/login';
 import { jwtDecode } from "jwt-decode";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class RegisterService {
   constructor(private http:HttpClient) { }
 
   AddRegisterUser(UserRegister:IUserRegister){
-    return this.http.post<IUserRegister>('http://localhost:5024/api/UserRegister', UserRegister)
+    return this.http.post<any>('http://localhost:5024/api/UserRegister/Register', UserRegister)
+   
   }
 
   UserLogin(login:Login){
@@ -29,6 +31,7 @@ export class RegisterService {
         console.log(decoded);
         
         localStorage.setItem("name", decoded.FullName)
+        localStorage.setItem("Role", decoded.Roles)
       }
       return true;
     }else{

@@ -8,6 +8,7 @@ import { FilterTaskPipe } from '../../Pipes/filter-task.pipe';
 import { ToastrService } from 'ngx-toastr';
 import { ITask } from '../../Interfaces/ITask';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { HasDirectiveDirective } from '../../Directive/has-directive.directive';
 
 
 
@@ -15,7 +16,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink, RouterOutlet, NgStyle, FilterTaskPipe],
+  imports: [FormsModule, CommonModule, RouterLink, RouterOutlet, NgStyle, FilterTaskPipe, HasDirectiveDirective],
   providers: [BsModalService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

@@ -4,13 +4,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { CommonModule } from '@angular/common';
 import { RegisterService } from '../../Services/register.service';
 import { Login } from '../../Models/login';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule, CommonModule],
+  imports: [FormsModule,ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -34,6 +34,8 @@ export class LoginComponent {
     this.registerService.UserLogin(this.loginData).subscribe(data => {
       localStorage.setItem("token", data);
       this.router.navigate(['/admin/list-task']);
+   
+
     }) 
   } 
 
