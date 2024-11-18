@@ -27,8 +27,7 @@ namespace TaskManagerAPI.Controllers
 
         [HttpPost("Register")]
         public async Task<IActionResult> AddUserRegistration(UserRegisterDTO userRegisterDTO)
-        {
-            
+        {            
             var Req = new UserRegister
             {
                 FullName = userRegisterDTO.FullName,
@@ -57,7 +56,7 @@ namespace TaskManagerAPI.Controllers
         {
             try
             {
-                var user = await _taskContext.UsersRegister.FirstOrDefaultAsync(u => u.Email == login.Email);
+                var user = await _taskContext.UsersRegister.FirstOrDefaultAsync(u => u.Email == login.Email); 
                 var password = BCrypt.Net.BCrypt.Verify(login.Password , user.PasswordHash);
                 if (password)
                 {

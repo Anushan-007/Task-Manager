@@ -45,7 +45,7 @@
           
           <button type="submit" class="btn btn-primary" (click)="onRegister(registerForm)">Register</button>
       
-          <p class="text-secondary link-underline-secondary">I am already a member</p>
+          <p class="text-secondary link-underline-secondary" [routerLink]="['/login']" >I am already a member</p>
         </form>
       
     </div>
